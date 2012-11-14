@@ -24,7 +24,30 @@
   <b>State:</b>
   <%= @resident.state %>
 </p>
+<p>
+  <b>Full Address:</b>
+  <%= @resident.full_street_address %>
+</p>
+<p>
+  <b>Longitude:</b>
+  <%= @resident.longitude %>
+</p>
+<p>
+  <b>Latitude:</b>
+  <%= @resident.latitude %>
+</p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@resident.latitude}%2C#{@resident.longitude}" %>
 
 
 <%= link_to 'Edit', edit_resident_path(@resident) %> |
 <%= link_to 'Back', residents_path %>
+
+
+<h3>Nearby Locations</h3>
+<ul>
+<% for resident in @resident.nearbys(10) %>
+  <li><%= link_to resident.full_street_address, resident %> (<%= resident.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
