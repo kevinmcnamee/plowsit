@@ -1,0 +1,2 @@
+module PlowJobsHelper
+end

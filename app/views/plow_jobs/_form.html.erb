@@ -1,0 +1,25 @@
+<%= form_for(@plow_job) do |f| %>
+  <% if @plow_job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plow_job.errors.count, "error") %> prohibited this plow_job from being saved:</h2>
+
+      <ul>
+      <% @plow_job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :business_id %><br />
+    <%= f.number_field :business_id %>
+  </div>
+  <div class="field">
+    <%= f.label :resident_id %><br />
+    <%= f.number_field :resident_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
